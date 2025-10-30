@@ -24,18 +24,24 @@ export const CartPopUp = ({ showCart, setShowCart }) => {
 
       {showCart && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white w-[400px] rounded-2xl shadow-lg p-5 relative max-h-[80vh] overflow-y-auto">
-            <button
+          <div className="bg-white w-[400px]  shadow-lg p-5 relative max-h-[80vh] overflow-y-auto">
+            {/* <button
               onClick={() => setShowCart(false)}
               className="absolute top-3 right-3 text-gray-600 text-xl"
             >
               ✕
-            </button>
+            </button> */}
 
-            <h2 className="text-xl font-bold mb-4">Your Cart</h2>
+            {/* <h2 className="text-xl font-bold mb-4">Your Cart</h2> */}
 
             {state.items.length === 0 ? (
-              <p className="text-gray-600 text-center">Your cart is empty 🛒</p>
+           <div className="flex items-center p-10 rounded-md justify-center flex-col gap-6">
+              <p className="text-black text-center text-xl  font-bold">Your cart is empty 🛒</p>
+                 
+              <button className="flex w-full p-2 text-white hover:bg-[#eea47a]   bg-[#D87D4A] items-center justify-center"    onClick={() => setShowCart(false)}>
+                close cart
+              </button>
+           </div>
             ) : (
               <div className="flex flex-col gap-4">
                 {state.items.map((item) => {

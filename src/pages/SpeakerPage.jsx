@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 import speaker1 from "../assets/image-zx91.jpg";
 import speaker2 from "../assets/image-zx7.jpg";
 import arrow from "../assets/asset 7.svg";
 import ListnerImg from "../assets/asset 13.jpeg";
-import { useNavigate } from 'react-router-dom';
-import { products } from '../utills/featuredData';
-import { storeData } from '../utills/productsData';
+import { useNavigate } from "react-router-dom";
+import { products } from "../utills/featuredData";
+import { storeData } from "../utills/productsData";
 
 const SpeakerPage = () => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const SpeakerPage = () => {
 
   return (
     <div>
-      <div className="h-[200px] flex items-center justify-center bg-[#191919]">
+      <div className="h-[200px] flex items-center  justify-center bg-[#191919]">
         <h1 className="flex items-center justify-center font-bold text-6xl uppercase text-white tracking-wide leading-0">
           Speakers
         </h1>
@@ -43,7 +43,7 @@ const SpeakerPage = () => {
 
               <h1 className="font-semibold text-3xl">
                 {product.title}
-                <br /> Earphones
+                <br />
               </h1>
 
               <p className="leading-relaxed max-w-2xl text-[#807878]">
@@ -55,12 +55,10 @@ const SpeakerPage = () => {
                 className="uppercase bg-[#D87D4A] py-3 px-2 w-[200px] text-white"
               >
                 See Product
-              </button>speakers
+              </button>
             </div>
           </div>
         ))}
-      </div>
-
       <div className="flex items-center gap-4 justify-between my-20">
         {products.map((product, index) => (
           <div
@@ -85,6 +83,8 @@ const SpeakerPage = () => {
           </div>
         ))}
       </div>
+     
+
 
       <div className="flex items-center justify-between my-20 gap-10">
         {/* Audio gear */}
@@ -113,6 +113,7 @@ const SpeakerPage = () => {
           />
         </div>
       </div>
+       </div>
     </div>
   );
 };

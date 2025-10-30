@@ -11,7 +11,9 @@ const StorePage = () => {
     <div>
       <div className='custom-container py-20'>
         <div>
-          <button className=" my-20 font-medium text-lg tracking-wide text-[#807d7d] border-b-2 border-transparent hover:border-[#8a8888] transition-ease-in-out duration-300 -pb-4">
+          <button className=" my-20 font-medium text-lg tracking-wide text-[#807d7d] border-b-2 border-transparent hover:border-[#8a8888] transition-ease-in-out duration-300 -pb-4"
+           onClick={() => navigate(-1)}
+          >
             Go Back
           </button>
         </div>

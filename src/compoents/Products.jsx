@@ -63,7 +63,7 @@ const Products = () => {
   const productQuantity = currentProduct ? currentProduct.quantity : 0;
 
 
-  //check nhere wheteher is in cart ot not
+ 
 
   const selectedProductIds = state?.items?.map((item) => item.slug);
   const isInCart = selectedProductIds?.includes(selectedProduct[0].slug);
@@ -71,7 +71,9 @@ const Products = () => {
     <div>
       <img src={selectedProduct[0]?.red} alt="" />
       <div className=" custom-container">
-        <button className=" my-20 font-medium text-lg tracking-wide text-[#807d7d] border-b-2 border-transparent hover:border-[#8a8888] transition-ease-in-out duration-300 -pb-4">
+        <button className="my-10 xl:my-20 font-medium text-lg tracking-wide text-[#807d7d] border-b-2 border-transparent hover:border-[#8a8888] transition-ease-in-out duration-300 -pb-4"
+         onClick={() => navigate(-1)}
+        >
           Go Back
         </button>
 

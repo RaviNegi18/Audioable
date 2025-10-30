@@ -23,12 +23,11 @@ const Greeting = () => {
 
 
 
-    function handleNavigate() {
-        navigate("/")
-        dispatch({
-            type: EMPTY_CART
-        })
-    }
+function handleNavigate() {
+  navigate("/");
+  dispatch({ type: "EMPTY_CART" });
+}
+
     return (
         <div className="custom-container my-20 flex items-center justify-center">
             <div
@@ -86,7 +85,7 @@ const Greeting = () => {
                         <p className="font-bold">${grandTotal.toLocaleString()}</p>
                     </div>
                     <div>
-                        <button className="flex items-center justify-center bg-[#da804d] w-full text-white p-2 hover:bg-[#ddb78d]" onClick={() => handleNavigate}>
+                        <button className="flex items-center justify-center bg-[#da804d] w-full text-white p-2 hover:bg-[#ddb78d]" onClick={() => handleNavigate()}>
                             Back To Home
                         </button>
                     </div>

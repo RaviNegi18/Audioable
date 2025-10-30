@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { BsCart3 } from "react-icons/bs";
 import logo from "../assets/image.png";
 import { navTags } from "../utills/featuredData";
 import { useCartContext } from "../context/cardContext";
 import { CartPopUp } from "../compoents/CartPopUp";
+
 const Navbar = () => {
   const { state } = useCartContext();
   const [showCart, setShowCart] = useState(false);
+  const location = useLocation();
 
   const totalItems = state?.items?.length || 0;
-
 
   useEffect(() => {
     if (showCart) {
@@ -20,16 +21,8 @@ const Navbar = () => {
     }
   }, [showCart]);
 
-
-  //prices
-
-
-
-
-
-
   return (
-    <nav className="bg-[#191919] h-[80px] sm:h-[90px] flex items-center relative">
+    <nav className="bg-[#191919] h-20 sm:h-[90px] flex items-center relative">
       <div className="custom-container w-full flex items-center justify-between gap-[200px] border-b-2 h-full border-zinc-700">
 
         <div>
@@ -38,13 +31,16 @@ const Navbar = () => {
           </h1>
         </div>
 
-
         <div className="flex items-center justify-center tracking-wide gap-[39px]">
           {navTags.map((tag, index) => (
             <Link
               to={tag.link}
               key={index}
-              className="font-semibold text-[14px] leading-1 tracking-wide text-white"
+              className={`font-semibold text-[14px] leading-1 tracking-wide transition-colors duration-200 ${
+                location.pathname === tag.link
+                  ? "text-[#D87D4A]" 
+                  : "text-white hover:text-[#D87D4A]" 
+              }`}
             >
               {tag.name.toUpperCase()}
             </Link>
@@ -62,10 +58,7 @@ const Navbar = () => {
         </div>
       </div>
 
-
-      {showCart && (
-        <CartPopUp showCart={showCart} setShowCart={setShowCart} />
-      )}
+      {showCart && <CartPopUp showCart={showCart} setShowCart={setShowCart} />}
     </nav>
   );
 };
