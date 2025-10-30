@@ -34,10 +34,10 @@ const App = () => {
               <Route path='/store/:slug' element={<StorePage />} />
               <Route path='/checkout' element={<CheckoutPage />} />
 
-              {/* <Route element={<PrivateRoute />}> */}
+              <Route element={<PrivateRoute />}>
 
                 <Route path='/thank-you' element={<Greeting />} />
-              {/* </Route> */}
+              </Route>
 
 
             </Routes>

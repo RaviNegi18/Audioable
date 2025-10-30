@@ -1,29 +1,38 @@
-import React from 'react';
+import React from "react";
 import headphone from "../assets/image-hero.jpg";
 import { heroSectionProducts } from "./../utills/featuredData.js";
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 const HeroSection = () => {
   const navigate = useNavigate();
 
   return (
     <div className="bg-[#191919] flex items-center justify-center text-white">
       <div className="custom-container flex items-center w-full justify-between gap-12 relative">
-
-
-        <div
+        <motion.div
           className="flex flex-col justify-center gap-4 flex-1 w-full h-[700px] bg-cover bg-center bg-no-repeat rounded-lg p-10"
           style={{
             backgroundImage: `url(${headphone})`,
           }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
         >
-          <h1 className="uppercase pt-30 text-[#808080] font-bold tracking-[10px] text-lg leading-6">
+          <motion.h1
+            className="uppercase pt-30 text-[#808080] font-bold tracking-[10px] text-lg leading-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.8 }}
+          >
             New Product
-          </h1>
+          </motion.h1>
 
           {heroSectionProducts?.map((product, index) => (
-            <div key={index} className='flex flex-col gap-8 items-start'>
-              <h2 className="font-semibold text-6xl max-w-md">{product.heading}</h2>
+            
+            <div key={index} className="flex flex-col gap-8 items-start" >
+              <h2 className="font-semibold text-6xl max-w-md">
+                {product.heading}
+              </h2>
 
               <p className="text-[#808080] max-w-sm leading-relaxed ">
                 {product.description}
@@ -37,8 +46,7 @@ const HeroSection = () => {
               </button>
             </div>
           ))}
-        </div>
-
+        </motion.div>
       </div>
     </div>
   );
