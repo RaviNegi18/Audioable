@@ -94,7 +94,7 @@ export const storeData = [
     subTitle: "New Product",
     type: "headphone",
     description:
-      "As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike.",
+      "As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike.Upgrade your sound system with the all new ZX9 active speaker. It’s a bookshelf speaker system that offers truly wireless connectivity -- creating new possibilities for more pleasing and practical audio setups.",
     image: mainBlackImg,
     reverse: true,
     price: "$1,950",
@@ -134,7 +134,7 @@ export const storeData = [
     subTitle: "New Product",
     type: "headphone",
     description:
-      "Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones.",
+    "The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.",
     image: mainMark2,
     reverse: false,
     price: "$3,750",
@@ -174,7 +174,7 @@ export const storeData = [
     subTitle: "New Product",
     type: "speaker",
     description:
-      "Stream high-quality sound with the ZX7 speaker designed for home or studio environments.",
+      "Stream high quality sound wirelessly with minimal to no loss. The ZX7 speaker uses high-end audiophile components that represents the top of the line powered speakers for home or studio use.",
     image: mainZX7,
     reverse: false,
     price: "$3,500",
@@ -244,7 +244,7 @@ export const storeData = [
     subTitle: "New Product",
     type: "speaker",
     description:
-      "Upgrade your home sound system with the ZX9 Speaker featuring powerful bass and crisp clarity.",
+     "Upgrade your sound system with the all new ZX9 active speaker. It’s a bookshelf speaker system that offers truly wireless connectivity -- creating new possibilities for more pleasing and practical audio setups.",
     image: mainZX9,
     reverse: false,
     price: "$4,500",

@@ -8,9 +8,9 @@ const HeroSection = () => {
 
   return (
     <div className="bg-[#191919] flex items-center justify-center text-white">
-      <div className="custom-container flex items-center w-full justify-between gap-12 relative">
+      <div className="custom-container sm:flex items-center w-full justify-between gap-12 relative">
         <motion.div
-          className="flex flex-col justify-center gap-4 flex-1 w-full h-[700px] bg-cover bg-center bg-no-repeat rounded-lg p-10"
+          className="flex flex-col justify-center gap-4 flex-1 w-auto  bg-contain sm:w-full sm:h-[700px] sm:bg-cover bg-center bg-no-repeat rounded-lg p-10"
           style={{
             backgroundImage: `url(${headphone})`,
           }}
@@ -30,11 +30,11 @@ const HeroSection = () => {
           {heroSectionProducts?.map((product, index) => (
             
             <div key={index} className="flex flex-col gap-8 items-start" >
-              <h2 className="font-semibold text-6xl max-w-md">
+              <h2 className="font-semibold text-2xl sm:text-6xl max-w-md">
                 {product.heading}
               </h2>
 
-              <p className="text-[#808080] max-w-sm leading-relaxed ">
+              <p className="text-[#808080] sm:max-w-sm leading-relaxed ">
                 {product.description}
               </p>
 

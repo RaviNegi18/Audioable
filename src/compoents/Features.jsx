@@ -15,9 +15,9 @@ const Features = () => {
     return (
         <div className=''>
 
-            <div className='custom-container'>
+            <div className='custom-container '>
 
-                <div className='flex items-center gap-8 justify-between my-40'>
+                <div className='flex items-center gap-20 flex-col  sm:flex-row  sm:gap-8 justify-between my-40'>
                     {/* shop */}
                     {
                         products.map((product, index) => {
@@ -85,7 +85,7 @@ const Features = () => {
 
                     </div>
                 </div>
-                <div className='flex items-stretch justify-between my-10 gap-10 '>
+                <div className='flex flex-col sm:flex-row items-stretch justify-between my-10 gap-10 '>
                     {/* yx1 eadrpjoen */}
 
                     <div className='flex-1'>
@@ -104,7 +104,7 @@ const Features = () => {
                     </div>
                 </div>
 
-                <div className='flex items-center justify-between my-40 gap-10 '>
+                <div className='flex items-center flex-col mx-4 sm:mx-0 sm:flex-row justify-between my-10 sm:my-40 gap-10 '>
                     {/* Audio gear */}
 
                     <div className='flex-1 flex flex-col gap-8'>

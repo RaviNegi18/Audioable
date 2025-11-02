@@ -14,7 +14,7 @@ const SpeakerPage = () => {
   return (
     <div>
       <div className="h-[200px] flex items-center  justify-center bg-[#191919]">
-        <h1 className="flex items-center justify-center font-bold text-6xl uppercase text-white tracking-wide leading-0">
+        <h1 className="flex items-center justify-center font-bold text-2xl sm:text-6xl uppercase text-white tracking-wide leading-0">
           Speakers
         </h1>
       </div>
@@ -24,19 +24,19 @@ const SpeakerPage = () => {
         {speakerData.map((product, index) => (
           <div
             key={product.id}
-            className={`flex items-stretch justify-center my-10 ${
+            className={`flex items-stretch gap-4 justify-center my-10 ${
               index % 2 !== 0 ? "flex-row-reverse" : ""
             }`}
           >
-            <div>
+            <div className="flex items-center justify-center">
               <img
                 src={product.image}
                 alt={product.title}
-                className="w-[800px] h-[600px] object-cover rounded-xl"
+                className="sm:w-[800px] w-full h-auto sm:h-[600px] object-cover rounded-xl"
               />
             </div>
 
-            <div className="flex items-start justify-center flex-col px-30 gap-10">
+            <div className="flex items-start justify-center flex-col sm:px-20 gap-4 sm:gap-10">
               <h1 className="text-[#D87D4A] text-xl font-semibold">
                 {product.subTitle}
               </h1>
@@ -59,11 +59,11 @@ const SpeakerPage = () => {
             </div>
           </div>
         ))}
-      <div className="flex items-center gap-4 justify-between my-20">
+      <div className="flex sm:flex-row gap-20 flex-col items-center sm:gap-5 justify-between my-20">
         {products.map((product, index) => (
           <div
             key={index}
-            className="bg-[#F1F1F1] text-[#191919] w-[350px] h-[200px] border-radius-[20px] gap-4 p-4 flex flex-col items-center bg-cover justify-center"
+            className="bg-[#F1F1F1] text-[#191919] w-[350px] h-[200px] border-radius-[20px] sm:gap-4 p-4 flex flex-col items-center bg-cover justify-center"
           >
             <img
               src={product.img}
@@ -86,7 +86,7 @@ const SpeakerPage = () => {
      
 
 
-      <div className="flex items-center justify-between my-20 gap-10">
+      <div className="flex sm:flex-row flex-col items-center justify-between sm:my-20 gap-10">
         {/* Audio gear */}
         <div className="flex-1 flex flex-col gap-8">
           <h1 className="text-5xl font-semibold text-[#191919] uppercase leading-tight">

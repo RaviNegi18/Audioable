@@ -15,7 +15,7 @@ const EarPhonePage = () => {
     return (
         <div>
             <div className="h-[200px] flex items-center justify-center bg-[#191919]">
-                <h1 className="flex items-center justify-center font-bold text-6xl uppercase text-white tracking-wide leading-0">
+                <h1 className="flex items-center justify-center font-bold text-2xl sm:text-6xl uppercase text-white tracking-wide leading-0">
                     Earphones
                 </h1>
             </div>
@@ -25,27 +25,27 @@ const EarPhonePage = () => {
                 {EarphoneData.map((product, index) => (
                     <div
                         key={product.id}
-                        className={`flex items-stretch justify-center my-10 ${index % 2 !== 0 ? "flex-row-reverse" : ""
+                        className={`flex items-stretch  justify-center gap-10 sm:gap-2 my-10 ${index % 2 !== 0 ? "flex-row-reverse" : ""
                             }`}
                     >
 
-                        <div>
+                        <div className="flex items-center justify-center">
                             <img
                                 src={product.image}
                                 alt={product.title}
-                                className="w-[800px] h-[600px] object-cover rounded-xl"
+                                className="sm:w-[800px] w-full h-auto sm:h-[600px] object-cover rounded-xl"
                             />
                         </div>
 
 
-                        <div className="flex items-start justify-center flex-col px-30 gap-10">
+                        <div className="flex items-start justify-center flex-col sm:px-30 gap-4 sm:gap-10">
                             <h1 className="text-[#D87D4A] text-xl font-semibold">
                                 {product.subTitle}
                             </h1>
 
                             <h1 className="font-semibold text-3xl">
                                 {product.title}
-                                <br /> Earphones
+                                <br /> 
                             </h1>
 
                             <p className="leading-relaxed max-w-2xl text-[#807878]">
@@ -63,7 +63,7 @@ const EarPhonePage = () => {
                 ))}
 
 
-                <div className="flex items-center gap-4 rounded-lg justify-between my-10">
+                <div className="flex items-center sm:gap-4 sm:flex-row gap-10 flex-col  rounded-lg justify-between my-10">
                     {products.map((product, index) => (
                         <div
                             key={index}
@@ -85,7 +85,7 @@ const EarPhonePage = () => {
                     ))}
                 </div>
 
-                <div className="flex items-center justify-between my-40 gap-10 ">
+                <div className="flex items-center sm:flex-row flex-col justify-between sm:my-30  my-20 gap-10 ">
                     <div className="flex-1 flex flex-col gap-8">
                         <h1 className="text-5xl font-semibold text-[#191919] uppercase leading-tight">
                             Bringing you the

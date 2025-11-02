@@ -16,17 +16,6 @@ const CheckoutPage = () => {
   } = useForm({
     mode: "onBlur",
   });
-  
-
-  // const onSubmit = (data) => {
-  //   console.log("Form Data S", data);
-  //   toast.success("Order placed successfully!");
-  //   dispatch({
-  //     type: "IS_CHECKOUT",
-  //     payload: true
-  //   })
-  //   navigate("/thank-you");
-  // };
 
   const subtotal = state.items.reduce((acc, item) => {
     const cleanedPrice = Number(item.price.replace(/\$|,/g, "")) || 0;
@@ -36,60 +25,50 @@ const CheckoutPage = () => {
   const vat = subtotal * 0.2;
   const grandTotal = subtotal + shipping + vat;
 
-
   const onSubmit = (data) => {
-  console.log("Form Data:", data);
-  toast.success("Order placed successfully!");
-  dispatch({
-    type: "IS_CHECKOUT",
-    payload: true,
-  });
-  navigate("/thank-you");
-};
+    console.log("Form Data:", data);
+    toast.success("Order placed successfully!");
+    dispatch({
+      type: "IS_CHECKOUT",
+      payload: true,
+    });
+    navigate("/thank-you");
+  };
 
-
-const onError = (errors) => {
-  if (errors.name) toast.error(errors.name.message);
-  else if (errors.email) toast.error(errors.email.message);
-  else if (errors.phone) toast.error(errors.phone.message);
-  else if (errors.address) toast.error(errors.address.message);
-  else if (errors.zip) toast.error(errors.zip.message);
-  else if (errors.city) toast.error(errors.city.message);
-  else if (errors.payment) toast.error(errors.payment.message);
-};
+  const onError = (errors) => {
+    const messages = Object.values(errors)
+      .map((err) => err.message)
+      .filter(Boolean);
+    if (messages.length) toast.error(messages[0]);
+  };
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50 py-4">
       <div className="custom-container my-2 xl:my-6">
-        <div className="custom-container">
-          <button
-            onClick={() => navigate(-1)}
-            className="my-4 font-medium text-sm tracking-wide text-[#807d7d] border-b-2 border-transparent hover:border-[#8a8888] transition-ease-in-out duration-300 -pb-4"
-          >
-            Go Back
-          </button>
-        </div>
+        <button
+          onClick={() => navigate(-1)}
+          className="my-4 font-medium text-sm tracking-wide text-[#807d7d] border-b-2 border-transparent hover:border-[#8a8888] transition-ease-in-out duration-300"
+        >
+          Go Back
+        </button>
 
         <form
-          onSubmit={handleSubmit(onSubmit,onError)}
-          className="flex items-start justify-center gap-6"
+          onSubmit={handleSubmit(onSubmit, onError)}
+          className="flex flex-col lg:flex-row items-start justify-center gap-6"
         >
-
+          {/* LEFT SIDE FORM */}
           <div
-            className="flex flex-col gap-4 w-[65%] p-6"
-            style={{
-              boxShadow:
-                "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
-            }}
+            className="flex flex-col gap-4 w-full lg:w-2/3 p-6 bg-white rounded-md shadow-sm"
           >
             <div className="flex w-full flex-col gap-2">
               <h1 className="uppercase text-xl font-bold">Checkout</h1>
               <p className="uppercase text-[#D87D4A] pt-3 text-sm font-semibold">
-                billing details
+                Billing Details
               </p>
             </div>
 
-            <div className="flex gap-8 w-full">
+            {/* Name and Email */}
+            <div className="flex flex-col sm:flex-row gap-4 w-full">
               <div className="flex flex-col gap-2 w-full">
                 <label className="pl-2 capitalize text-xs font-semibold">
                   Name
@@ -98,8 +77,9 @@ const onError = (errors) => {
                   {...register("name", { required: "Name is required" })}
                   type="text"
                   placeholder="Alexa Clark"
-                  className={`w-full outline-none border p-3 rounded-sm ${errors.name ? "border-red-500" : "border-slate-300"
-                    }`}
+                  className={`w-full outline-none border p-3 rounded-sm ${
+                    errors.name ? "border-red-500" : "border-slate-300"
+                  }`}
                 />
                 {errors.name && (
                   <p className="text-red-500 text-xs">{errors.name.message}</p>
@@ -120,8 +100,9 @@ const onError = (errors) => {
                   })}
                   type="email"
                   placeholder="alexa@gmail.com"
-                  className={`w-full outline-none border p-3 rounded-sm ${errors.email ? "border-red-500" : "border-slate-300"
-                    }`}
+                  className={`w-full outline-none border p-3 rounded-sm ${
+                    errors.email ? "border-red-500" : "border-slate-300"
+                  }`}
                 />
                 {errors.email && (
                   <p className="text-red-500 text-xs">{errors.email.message}</p>
@@ -129,8 +110,8 @@ const onError = (errors) => {
               </div>
             </div>
 
-
-            <div className="flex flex-col gap-2 w-full px-2">
+            {/* Phone */}
+            <div className="flex flex-col gap-2 w-full">
               <label className="pl-2 capitalize text-xs font-semibold">
                 Phone Number
               </label>
@@ -144,16 +125,17 @@ const onError = (errors) => {
                 })}
                 type="text"
                 placeholder="9876543210"
-                className={`w-full outline-none border p-3 rounded-sm ${errors.phone ? "border-red-500" : "border-slate-300"
-                  }`}
+                className={`w-full outline-none border p-3 rounded-sm ${
+                  errors.phone ? "border-red-500" : "border-slate-300"
+                }`}
               />
               {errors.phone && (
                 <p className="text-red-500 text-xs">{errors.phone.message}</p>
               )}
             </div>
 
-
-            <div className="flex flex-col gap-2 w-full px-2">
+            {/* Shipping */}
+            <div className="flex flex-col gap-2 w-full">
               <p className="uppercase text-[#D87D4A] text-sm py-2 font-semibold">
                 Shipping Info
               </p>
@@ -164,15 +146,17 @@ const onError = (errors) => {
                 {...register("address", { required: "Address is required" })}
                 type="text"
                 placeholder="123 Main Street"
-                className={`w-full outline-none border p-3 rounded-sm ${errors.address ? "border-red-500" : "border-slate-300"
-                  }`}
+                className={`w-full outline-none border p-3 rounded-sm ${
+                  errors.address ? "border-red-500" : "border-slate-300"
+                }`}
               />
               {errors.address && (
                 <p className="text-red-500 text-xs">{errors.address.message}</p>
               )}
             </div>
 
-            <div className="flex items-center justify-center gap-8 w-full px-6 py-2">
+            {/* Zip and City */}
+            <div className="flex flex-col sm:flex-row items-center gap-4 w-full py-2">
               <div className="flex flex-col gap-2 w-full">
                 <label className="pl-2 text-xs font-semibold">Zip Code</label>
                 <input
@@ -184,8 +168,9 @@ const onError = (errors) => {
                     },
                   })}
                   placeholder="110001"
-                  className={`w-full outline-none border p-3 rounded-sm ${errors.zip ? "border-red-500" : "border-slate-300"
-                    }`}
+                  className={`w-full outline-none border p-3 rounded-sm ${
+                    errors.zip ? "border-red-500" : "border-slate-300"
+                  }`}
                 />
                 {errors.zip && (
                   <p className="text-red-500 text-xs">{errors.zip.message}</p>
@@ -197,8 +182,9 @@ const onError = (errors) => {
                 <input
                   {...register("city", { required: "City is required" })}
                   placeholder="New Delhi"
-                  className={`w-full outline-none border p-3 rounded-sm ${errors.city ? "border-red-500" : "border-slate-300"
-                    }`}
+                  className={`w-full outline-none border p-3 rounded-sm ${
+                    errors.city ? "border-red-500" : "border-slate-300"
+                  }`}
                 />
                 {errors.city && (
                   <p className="text-red-500 text-xs">{errors.city.message}</p>
@@ -206,14 +192,15 @@ const onError = (errors) => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-2 w-full px-2">
+            {/* Payment */}
+            <div className="flex flex-col gap-2 w-full">
               <p className="uppercase text-[#D87D4A] text-sm py-2 font-semibold">
                 Payment Details
               </p>
-              <div className="flex items-start justify-between gap-6 w-full">
+              <div className="flex flex-col sm:flex-row items-start justify-between gap-4 w-full">
                 <p className="text-sm font-semibold">Payment Method</p>
 
-                <div className="flex flex-col gap-4 w-[70%]">
+                <div className="flex flex-col gap-4 w-full sm:w-[70%]">
                   <label className="flex items-center gap-4 border p-4 border-slate-300 rounded">
                     <input
                       type="radio"
@@ -242,9 +229,10 @@ const onError = (errors) => {
               </div>
             </div>
 
-            <div className="flex p-4 gap-10 items-center">
-              <img src={COD} alt="cod" />
-              <h1 className="text-sm font-medium text-slate-500 max-w-[500px] leading-6">
+            {/* COD info */}
+            <div className="flex flex-col sm:flex-row items-center gap-6 bg-gray-50 p-4 rounded">
+              <img src={COD} alt="cod" className="w-12 h-12" />
+              <h1 className="text-sm font-medium text-slate-500 leading-6">
                 The ‘Cash on Delivery’ option enables you to pay in cash when our
                 delivery courier arrives. Just make sure your address is correct
                 so that your order will not be cancelled.
@@ -253,18 +241,15 @@ const onError = (errors) => {
 
             <button
               type="submit"
-              className="bg-[#D87D4A] text-white w-[200px] py-3 rounded-md font-semibold mt-4 self-end"
+              className="bg-[#D87D4A] text-white w-full sm:w-[200px] py-3 rounded-md font-semibold mt-4 self-end"
             >
               Continue & Pay
             </button>
           </div>
 
+          {/* RIGHT SIDE SUMMARY */}
           <div
-            className="flex flex-col p-6 w-[35%]"
-            style={{
-              boxShadow:
-                "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
-            }}
+            className="flex flex-col p-6 w-full lg:w-1/3 bg-white rounded-md shadow-sm"
           >
             <div className="flex justify-between mb-4">
               <h1 className="text-xl font-semibold text-gray-900">Summary</h1>
@@ -276,7 +261,7 @@ const onError = (errors) => {
               return (
                 <div
                   key={item.id}
-                  className="flex justify-between items-center gap-4 text-gray-800"
+                  className="flex justify-between items-center gap-4 text-gray-800 py-2"
                 >
                   <img
                     src={item.image}
