@@ -5,7 +5,7 @@
 
 ---
 
-## 🖼️ Preview
+## Preview
 
 Here’s a quick look at the project 👇
 
